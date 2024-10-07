@@ -1,9 +1,9 @@
-/* .App {
+.App {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   display: flex;
-} */
+}
 
 .leftSide {
   flex: 0.2;

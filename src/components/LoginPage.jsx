@@ -13,16 +13,16 @@ export const LoginPage = () => {
       <h1 className='title-app'>UCUGRAM</h1>
       <div className='log-box'>
             <h3 className='log-text'>Iniciar Sesión</h3>
-            <form>
-              <div className="username">
+            <form className='form-login'>
+              <div className="username-login">
                 <input type="text" placeholder="Usuario" />
                 <AccountCircleIcon className='user-icon'></AccountCircleIcon>
               </div>
-              <div className="password">
+              <div className="password-login">
                 <input type="password" placeholder="Contraseña" />
                 <LockIcon className='lock-icon'></LockIcon>
               </div>
-              <button type="submit">Ingresar</button>
+              <button className='boton-ingresar' type="submit">Ingresar</button>
               <Box
               sx={{
                 display: 'flex',
