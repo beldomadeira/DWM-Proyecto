@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import LeftSide from './components/LeftSide';
+import MiddleSide from './components/MiddleSide';
 
 function App() {
+  const userProfilePicTest = 'https://img.freepik.com/psd-gratis/ilustracion-3d-avatar-o-perfil-humano_23-2150671142.jpg';
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='leftSide'>
+        <LeftSide userProfilePic={userProfilePicTest} /> 
+      </div>
+      <div className='middleSide'>
+        <MiddleSide />
+      </div>
+      <div className='rightSide'>
+      
+      </div>
     </div>
   );
 }
