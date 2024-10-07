@@ -1,22 +1,23 @@
 import './App.css';
-import LeftSide from './components/LeftSide';
-import MiddleSide from './components/MiddleSide';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AuthProvider from './context/AuthContext';
+import PrivateRoute from './components/PrivateRoute';
 
-function App() {
-  const userProfilePicTest = 'https://img.freepik.com/psd-gratis/ilustracion-3d-avatar-o-perfil-humano_23-2150671142.jpg';
+import Feed from './pages/Feed';
+
+const App = () => {
   return (
-    <div className="App">
-      <div className='leftSide'>
-        <LeftSide userProfilePic={userProfilePicTest} /> 
-      </div>
-      <div className='middleSide'>
-        <MiddleSide />
-      </div>
-      <div className='rightSide'>
-      
-      </div>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Rutas públicas */}
+          <Route path="/feed" element={<Feed />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
