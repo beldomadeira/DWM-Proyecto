@@ -25,7 +25,7 @@ const RegisterFormulario = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="form-register" onSubmit={handleSubmit}>
             <input
                 type="text"
                 name="nombreusuario"

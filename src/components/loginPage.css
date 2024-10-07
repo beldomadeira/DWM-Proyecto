@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600;700&display=swap');
 
 @media (max-width: 767px) {
-  .App-header .logPage {
+  .App-header-login .logPage {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    color: #d1ccc8;
 
   }
 
@@ -17,6 +16,7 @@ body{
   color: #d1ccc8;
   text-align: center;
   font-family: "Poppins", sans-serif;
+  /* background-color: #f4f2f1; */
 }
 
 .title-app {
@@ -40,13 +40,13 @@ body{
     box-shadow: 43px 4px 40px rgba(0, 0, 0, 0.1);
 }
   
-  form {
+  .form-login {
     display: flex;
     flex-direction: column; /* Apila verticalmente por defecto */
     align-items: center;
   }
   
-  .username input, .password input, button {
+  .username-login input, .password-login input, .boton-ingresar {
     margin: 10px 0;
     padding: 10px;
     font-size: 16px;
@@ -55,7 +55,7 @@ body{
     border:rgba(0, 0, 0, 0.1)
   }
   
-  button {
+  .boton-ingresar {
     background-color: #00cc99;
     color: white;
     border: none;
@@ -63,15 +63,15 @@ body{
     padding: 10px;
   }
   
-  button:hover {
+  .boton-ingresar:hover {
     background-color: #009977;
   }
   
-  .username{
+  .username-login{
     position: relative;
 }
 
-    .password{
+    .password-login{
     position: relative;
 }
 
@@ -111,22 +111,22 @@ body{
       box-shadow: 43px 4px 40px rgba(0, 0, 0, 0.1); 
     }
 
-    form {
+    .form-login {
         width: 100%; 
         display: flex;
         flex-direction: column;         
         align-items: center;
     }
 
-    .username{
+    .username-login{
         position: relative;
     }
 
-    .password{
+    .password-login{
         position: relative;
     }
 
-    .username input, .password input, button {
+    .username-login input, .password-login input, .boton-ingresar {
       width: 600px; 
       max-width: 800px; 
       font-size: 18px; 
@@ -145,7 +145,7 @@ body{
         top: 18px ;
     }
 
-    button {
+    .boton-ingresar {
       width: auto; 
       padding: 12px 20px;
     }
