@@ -6,6 +6,7 @@ import AuthProvider from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
 import Feed from './pages/Feed';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           {/* Rutas públicas */}
           <Route path="/feed" element={<Feed />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </AuthProvider>
