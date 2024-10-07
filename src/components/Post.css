@@ -1,0 +1,103 @@
+.post {
+    background-color: #ffffff; 
+    border: 1px solid #dbdbdb; 
+    border-radius: 10px; 
+    max-width: 600px; 
+    width: 100%; 
+    margin: 20px auto; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
+    overflow: hidden; 
+}
+
+.postHeader {
+    display: flex;
+    align-items: center;
+    padding: 10px; 
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+}
+
+.profilePic {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    margin-right: 10px; 
+}
+
+.username {
+    font-weight: 700; 
+    color: #262626; 
+    margin-right: 10px; 
+}
+
+.moreIcon {
+    margin-left: auto; 
+    cursor: pointer; 
+}
+
+.postImage {
+    width: 100%; 
+    height: auto; 
+}
+
+.postContent {
+    padding: 10px; 
+}
+
+.likes {
+    font-weight: 600; 
+    color: #262626; 
+}
+
+.caption {
+    margin-top: 5px; 
+    color: #8e8e8e; 
+}
+
+.timeAgo {
+    margin-top: 5px; 
+    font-size: 12px;
+    color: #a9a9a9; 
+}
+
+.postActions {
+    display: flex;
+    align-items: center;
+    padding: 10px; 
+}
+
+.actionIcon {
+    font-size: 30px; 
+    cursor: pointer; 
+    transition: color 0.3s, transform 0.2s; 
+    margin-right: 15px; 
+}
+
+.actionIcon:hover {
+    color: #51bba8; 
+}
+
+.actionIcon:active {
+    transform: scale(1.1); 
+}
+
+.addComment {
+    margin: 10px 0; 
+}
+
+.addComment input {
+    width: calc(100% - 20px);
+    border: 1px solid #dbdbdb; 
+    border-radius: 5px;
+    padding: 10px; 
+    box-sizing: border-box; 
+    outline: none;
+    margin: 0 auto;
+    display: block; 
+}
+
+
+
