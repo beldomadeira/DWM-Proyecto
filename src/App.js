@@ -1,7 +1,6 @@
 import './App.css';
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'; // Agregar Navigate
 import AuthProvider from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -14,7 +13,10 @@ const App = () => {
     <AuthProvider>
       <Router>
         <Routes>
-          {/* Rutas públicas */}
+          {/* por default va a register. */}
+          <Route path="/" element={<Navigate to="/register" />} />
+          
+          {/* Rutas publicas */}
           <Route path="/feed" element={<Feed />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterFormulario />} />
