@@ -16,7 +16,6 @@ export const LoginPage = () => {
             <form>
               <div className="username">
                 <input type="text" placeholder="Usuario" />
-                {/* use AccountCircleIcon on input */}
                 <AccountCircleIcon className='user-icon'></AccountCircleIcon>
               </div>
               <div className="password">
@@ -61,7 +60,11 @@ export const LoginPage = () => {
     </div> 
     
 
-    // separacion login y registro
 
   );
 }
+
+
+
+
+    

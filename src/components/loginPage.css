@@ -1,4 +1,24 @@
-/* Estilos por defecto para dispositivos móviles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600;700&display=swap');
+
+@media (max-width: 767px) {
+  .App-header .logPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #d1ccc8;
+
+  }
+
+}
+
+body{
+  color: #d1ccc8;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
 .title-app {
     font-size: 2rem; 
     text-align: center;
