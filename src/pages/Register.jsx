@@ -18,10 +18,22 @@ const RegisterFormulario = () => {
     }
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formulario);
-        navigate("/login");
+        const response = await fetch("http://localhost:3000/api/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "username": formulario.nombreusuario,
+                "email": formulario.email,
+                "password": formulario.contrasena,
+            }),
+        });
+        console.log(response);
+        if(response.ok)navigate("/feed");
     }
 
     return (
