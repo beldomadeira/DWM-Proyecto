@@ -3,12 +3,20 @@ import './LeftSide.css';
 import HomeIcon from '@mui/icons-material/Home';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AddIcon from '@mui/icons-material/Add';
+import {useNavigate} from "react-router-dom";
 
 const LeftSide = ({ userProfilePic }) => {
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        navigate("/feed");
+    }
     return (
         <div className="LeftSidePart">
             <div className="logoPart">
-                <h1 className="logoText">UCUGRAM</h1>
+                <h1 className="logoText" onClick={handleSubmit}>UCUGRAM</h1>
             </div>
             <div className="navLinkPart">
                 <div className="navLink">
