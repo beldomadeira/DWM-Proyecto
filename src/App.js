@@ -7,17 +7,36 @@ import PrivateRoute from './components/PrivateRoute';
 import RegisterFormulario from './pages/Register';
 import Feed from './pages/Feed';
 import Login from './pages/Login';
+import UserProfile from './pages/User';
 
 const App = () => {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          {/* por default va a register. */}
+          {/* Ruta default */}
           <Route path="/" element={<Navigate to="/register" />} />
-          
+          <Route path="*" element={<Navigate to="/register" />} />
+
+          {/* Rutas privadas */}
+          <Route
+            path="/user/:username"
+            element={
+              <PrivateRoute>
+                <UserProfile />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/feed"
+            element={
+              <PrivateRoute>
+                <Feed />
+              </PrivateRoute>
+            }
+          />
+
           {/* Rutas publicas */}
-          <Route path="/feed" element={<Feed />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterFormulario />} />
         </Routes>

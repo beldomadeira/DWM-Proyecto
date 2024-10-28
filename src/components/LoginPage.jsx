@@ -1,34 +1,50 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import "./loginPage.css";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
+import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+
+const preventDefault = (event) => event.preventDefault();
 
 export const LoginPage = () => {
 
-  const preventDefault = (event) => event.preventDefault();
-  const [usernameLogin, setUsernameLogin] =  useState(""); 
-  const [passwordLogin, setPasswordLogin] =  useState(""); 
-  const [error, setError] =  useState(null);
-  
-  const validatePassword = (input) => {
-    if (input.length < 8) {
-      setError("Contraseña invalida - Mínimo 8 caracteres.");
-    } else {
-      setError(null);
-    }
+  const [formulario, setFormulario] = useState({
+    email: "",
+    contrasena: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormulario(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    if (passwordLogin.length < 8) {
-      setError('La contraseña debe tener al menos 8 caracteres.');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:3000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formulario.email,
+        password: formulario.contrasena,
+      }),
+    });
+
+    console.log(response);
+
+    if (response.ok) {
+      navigate("/feed");
     } else {
-      setError(null);
-      console.log('Usuario:', usernameLogin);
-      console.log('Contraseña:', passwordLogin);
+      console.error('Login failed');
     }
   };
 
@@ -37,30 +53,28 @@ export const LoginPage = () => {
       <h1 className='title-app'>UCUGRAM</h1>
       <div className='log-box'>
         <h3 className='log-text'>Iniciar Sesión</h3>
-        <form className='form-login' onSubmit={handleSubmit}>
-          <div className="username-login">
+        <form onSubmit={handleSubmit}>
+          <div className="username">
             <input 
               type="text" 
+              name="email" 
               placeholder="Usuario" 
-              value={usernameLogin}
-              onChange={(e) => setUsernameLogin(e.target.value)} 
+              value={formulario.email} 
+              onChange={handleInputChange} 
             />
             <AccountCircleIcon className='user-icon'></AccountCircleIcon>
           </div>
-          <div className="password-login">
+          <div className="password">
             <input 
               type="password" 
+              name="contrasena" 
               placeholder="Contraseña" 
-              value={passwordLogin} 
-              onChange={(e) => setPasswordLogin(e.target.value)} 
+              value={formulario.contrasena} 
+              onChange={handleInputChange} 
             />
             <LockIcon className='lock-icon'></LockIcon>
           </div>
-
-          {error && <p className="error-message">{error}</p>} 
-          
-          <button className='boton-ingresar' type="submit">Ingresar</button>
-          
+          <button type="submit">Ingresar</button>
           <Box
             sx={{
               display: 'flex',
@@ -95,6 +109,6 @@ export const LoginPage = () => {
           </Box>
         </form>
       </div>
-    </div> 
+    </div>
   );
 }
