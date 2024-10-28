@@ -1,0 +1,61 @@
+
+.App {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fafafa;
+  }
+  
+  .leftSide {
+    position: fixed;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    border-right: 1px solid #dbdbdb;
+    background-color: white;
+    z-index: 100;
+  }
+  
+  .middleSide {
+    flex: 1;
+    margin-left: 240px; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .rightSide {
+    width: 320px;
+    border-left: 1px solid #dbdbdb;
+    padding: 20px;
+  }
+  
+  @media (max-width: 1160px) {
+    .leftSide {
+      width: 72px;
+    }
+    
+    .middleSide {
+      margin-left: 72px;
+    }
+    
+    .rightSide {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .leftSide {
+      top: auto;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      border-top: 1px solid #dbdbdb;
+      border-right: none;
+    }
+    
+    .middleSide {
+      margin-left: 0;
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+    }
+  }
