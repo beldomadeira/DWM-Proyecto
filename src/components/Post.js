@@ -23,7 +23,7 @@ const Post = ({ username, userProfilePic, postImage, caption, likes, comments, t
             <div className="postContent">
                 <div className="likes">{likes.toLocaleString()} likes</div>
                 <div className="caption">
-                    <span className="username">{username}</span> {caption}
+                    <span className="username-post">{username}</span> {caption}
                 </div>
                 <div className="timeAgo">{timeAgo}</div>
             </div>

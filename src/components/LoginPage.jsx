@@ -6,6 +6,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
+import axios from 'axios';
 
 const preventDefault = (event) => event.preventDefault();
 
@@ -28,44 +29,43 @@ export const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    try {
+      const response = await axios.post("http://localhost:3001/api/auth/login", {
         email: formulario.email,
         password: formulario.contrasena,
-      }),
-    });
-
-    console.log(response);
-
-    if (response.ok) {
+      });
+      // Guardar token
+      
+      localStorage.setItem("token", response.data.token);
       navigate("/feed");
-    } else {
-      console.error('Login failed');
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        console.error("Credenciales incorrectas");
+        alert("Correo o contraseña incorrecta"); // Mostrar alerta o un mensaje en pantalla
+      } else {
+        console.error("Error en el inicio de sesión", error);
+      }
     }
-  };
+  };  
 
   return (
     <div>
       <h1 className='title-app'>UCUGRAM</h1>
       <div className='log-box'>
         <h3 className='log-text'>Iniciar Sesión</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="username">
-            <input 
+        <form className="form-login" onSubmit={handleSubmit}>
+          <div className="username-login">
+            <input className='input-user'
               type="text" 
               name="email" 
-              placeholder="Usuario" 
+              placeholder="Correo" 
               value={formulario.email} 
               onChange={handleInputChange} 
             />
             <AccountCircleIcon className='user-icon'></AccountCircleIcon>
           </div>
-          <div className="password">
-            <input 
+          <div className="password-login">
+            <input className='input-pass'
               type="password" 
               name="contrasena" 
               placeholder="Contraseña" 
@@ -74,7 +74,7 @@ export const LoginPage = () => {
             />
             <LockIcon className='lock-icon'></LockIcon>
           </div>
-          <button type="submit">Ingresar</button>
+          <button type="submit" className='boton-ingresar'>Ingresar</button>
           <Box
             sx={{
               display: 'flex',
@@ -103,9 +103,13 @@ export const LoginPage = () => {
             }}
             onClick={preventDefault}
           >
-            <Link href="#" underline="hover">
-              {'Registrarse'}
-            </Link>
+            <span
+              className="link"
+              onClick={() => navigate("/register")}
+              style={{ cursor: "pointer", color:"blue" }}
+            >
+              Registrarse
+            </span>
           </Box>
         </form>
       </div>
