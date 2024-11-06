@@ -1,6 +1,6 @@
 import React from "react";
 import '../components/Register.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 const RegisterFormulario = () => {
@@ -66,6 +66,10 @@ const RegisterFormulario = () => {
                 />
                 <button className="register-button" type="submit">Registrarse</button>
             </form>
+            <div className="register-to-login">
+            <p>¿Ya tienes una cuenta?</p>
+            <Link to="/login" className="login-link">Inicia sesión</Link>
+            </div>
         </div>
     );
 }
