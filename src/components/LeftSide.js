@@ -4,6 +4,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LeftSide = ({ userProfilePic }) => {
     const navigate = useNavigate();
@@ -17,6 +18,26 @@ const LeftSide = ({ userProfilePic }) => {
         e.preventDefault();
         navigate("/feed");
     };
+
+//edite esto pero no esta andando bien
+
+    const handleProfileClick = () => {
+        axios.get(`http://localhost:3001/api/user/profile/6728eaaa9aadd247da5f2a9a`,
+        {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        }
+        ).then((response) => {
+            console.log("Perfil del usuario", response.data);
+            console.log("Perfil del usuario 2", response.data.username);    
+            navigate(`/user/${response.data}`, { state: { userData: response.data } });
+        }).catch((error) => {
+            console.error("Error al obtener el perfil del usuario", error);
+    });
+    }
+
+//hasta aca
 
     return (
         <div className="LeftSidePart">
@@ -36,7 +57,7 @@ const LeftSide = ({ userProfilePic }) => {
                     <AddIcon className="icon" />
                     <div className="navName">Create</div>
                 </div>
-                <div className="navLink">
+                <div className="navLink" onClick={handleProfileClick}>
                     <img 
                         src={userProfilePic} 
                         alt="User Profile" 
