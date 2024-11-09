@@ -1,11 +1,11 @@
 import React from 'react';
 import './ProfileHeader.css';
 
-const ProfileHeader = ({ username, name, bio, avatar }) => {
+const ProfileHeader = ({ username, name, description, profilePicture }) => {
   return (
     <div className="profile-header">
       <div className="profile-avatar">
-        <img src={avatar || "/api/placeholder/150/150"} alt={username} />
+        <img src={profilePicture }  />
       </div>
       
       <div className="profile-info">
@@ -16,8 +16,7 @@ const ProfileHeader = ({ username, name, bio, avatar }) => {
         </div>
         
         <div className="profile-details">
-          <h2 className="profile-name">{name}</h2>
-          <p className="profile-bio">{bio}</p>
+          <p className="profile-bio">{description}</p>
         </div>
       </div>
     </div>

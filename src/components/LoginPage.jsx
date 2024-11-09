@@ -34,9 +34,9 @@ export const LoginPage = () => {
         email: formulario.email,
         password: formulario.contrasena,
       });
-      // Guardar token
       
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("userId", response.data._id);
       navigate("/feed");
     } catch (error) {
       if (error.response && error.response.status === 401) {

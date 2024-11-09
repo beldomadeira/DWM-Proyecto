@@ -7,50 +7,53 @@ import ProfileGrid from '../components/ProfileGrid';
 import './Layout.css';
 import './User.css';
 
+const defaultProfilePicture = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+
 const User = () => {
-  const { username } = useParams();
+  const { id } = useParams();
   const location = useLocation();
-  
-  const userProfilePicTest = 'https://img.freepik.com/psd-gratis/ilustracion-3d-avatar-o-perfil-humano_23-2150671142.jpg';
-  
-  // Obtenemos los datos del usuario del state o usamos datos por defecto
+
+  // Datos predeterminados si no se pasa `userData` desde `location.state`
   const userData = location.state?.userData || {
-    name: "Usuario no encontrado",
-    bio: "No hay información disponible",
-    avatar: null,
+    user: {
+      username: "Usuario no encontrado",
+      description: "No hay información disponible",
+      profilePicture: defaultProfilePicture,
+    },
     stats: {
       posts: 0,
       followers: 0,
-      following: 0
+      following: 0,
     },
-    posts: []
+    posts: [],
   };
+
+  console.log("user.jsx:", userData);
 
   return (
     <div className="App">
       <div className="leftSide">
-        <LeftSide userProfilePic={userProfilePicTest} />
+        <LeftSide userProfilePic={userData.user.profilePicture} />
       </div>
-      
+
       <div className="middleSide">
         <div className="user-profile">
-          <ProfileHeader 
-            username={username}
-            name={userData.name}
-            bio={userData.bio}
-            avatar={userData.avatar}
+          <ProfileHeader
+            id={id}
+            username={userData.user.username}
+            description={userData.user.description}
+            profilePicture={userData.user.profilePicture}
           />
-          
-          <ProfileStats 
-            posts={userData.stats.posts}
-            followers={userData.stats.followers}
-            following={userData.stats.following}
+
+          <ProfileStats
+            posts={userData.posts}
+            followers={userData.user.friends}
+            // following={userData.stats.following}
           />
-          
+
           <ProfileGrid posts={userData.posts} />
         </div>
       </div>
-      
     </div>
   );
 };
