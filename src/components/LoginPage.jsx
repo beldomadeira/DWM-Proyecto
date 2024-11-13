@@ -37,6 +37,9 @@ export const LoginPage = () => {
       // Guardar token
       
       localStorage.setItem("token", response.data.token);
+      console.log("Inicio de sesión exitoso", response.data);
+      localStorage.setItem("id", response.data._id);
+      console.log("ID de usuario", response.data._id);
       navigate("/feed");
     } catch (error) {
       if (error.response && error.response.status === 401) {

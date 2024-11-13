@@ -1,23 +1,116 @@
 .profile-stats {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #dbdbdb;
+  background-color: #ffffff;
+  gap: 0.5rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 8px;
+  user-select: none;
+  position: relative;
+}
+
+.stat-item:focus {
+  outline: none;
+}
+
+.stat-item:focus-visible {
+  box-shadow: 0 0 0 2px #0095f6;
+}
+
+.stat-item:hover {
+  background-color: #fafafa;
+}
+
+.stat-item:active {
+  background-color: #f0f0f0;
+}
+
+.stat-number {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #262626;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  color: #8e8e8e;
+  font-size: 0.875rem;
+  text-transform: lowercase;
+}
+
+/* Add separator between items */
+.stat-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 1px;
+  background-color: #dbdbdb;
+}
+
+/* Hover effect for the whole item */
+.stat-item:hover .stat-number {
+  color: #0095f6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .profile-stats {
     padding: 1rem 0;
-    border-bottom: 1px solid #dbdbdb;
   }
-  
+
   .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 2rem;
+    padding: 0.5rem 1.5rem;
   }
-  
+
   .stat-number {
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
-  
+
   .stat-label {
-    color: #8e8e8e;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
   }
+}
+
+@media (max-width: 480px) {
+  .profile-stats {
+    gap: 0.25rem;
+  }
+
+  .stat-item {
+    padding: 0.5rem 1rem;
+  }
+
+  .stat-item:not(:last-child)::after {
+    display: none;
+  }
+}
+
+/* Animation for number changes */
+.stat-number {
+  transition: transform 0.2s ease;
+}
+
+.stat-number:hover {
+  transform: translateY(-2px);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .stat-item,
+  .stat-number {
+    transition: none;
+  }
+}

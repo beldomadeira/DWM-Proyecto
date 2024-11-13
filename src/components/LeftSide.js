@@ -4,13 +4,13 @@ import HomeIcon from '@mui/icons-material/Home';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const LeftSide = ({ userProfilePic }) => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem("token"); // Eliminar el token de localStorage
+        localStorage.removeItem("id"); // Eliminar el id de localStorage
         navigate("/login"); // Redirigir al usuario a la página de inicio de sesión
     };
 
@@ -22,19 +22,8 @@ const LeftSide = ({ userProfilePic }) => {
 //edite esto pero no esta andando bien
 
     const handleProfileClick = () => {
-        axios.get(`http://localhost:3001/api/user/profile/6728eaaa9aadd247da5f2a9a`,
-        {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-        }
-        ).then((response) => {
-            console.log("Perfil del usuario", response.data);
-            console.log("Perfil del usuario 2", response.data.username);    
-            navigate(`/user/${response.data}`, { state: { userData: response.data } });
-        }).catch((error) => {
-            console.error("Error al obtener el perfil del usuario", error);
-    });
+        const storedUserId = localStorage.getItem('id');
+        navigate(`/user/${storedUserId}`);
     }
 
 //hasta aca

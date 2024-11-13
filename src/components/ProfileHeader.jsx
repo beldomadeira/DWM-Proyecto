@@ -1,7 +1,15 @@
 import React from 'react';
 import './ProfileHeader.css';
 
-const ProfileHeader = ({ username, name, bio, avatar }) => {
+const ProfileHeader = ({ 
+  username, 
+  name, 
+  bio, 
+  avatar, 
+  email, 
+  createdAt, 
+  isOwnProfile 
+}) => {
   return (
     <div className="profile-header">
       <div className="profile-avatar">
@@ -11,13 +19,22 @@ const ProfileHeader = ({ username, name, bio, avatar }) => {
       <div className="profile-info">
         <div className="profile-username-container">
           <h1 className="profile-username">{username}</h1>
-          <button className="edit-profile-btn">Editar perfil</button>
-          <button className="settings-btn">⚙️</button>
+          {isOwnProfile && (
+            <>
+              <button className="edit-profile-btn">Editar perfil</button>
+            </>
+          )}
         </div>
         
         <div className="profile-details">
           <h2 className="profile-name">{name}</h2>
           <p className="profile-bio">{bio}</p>
+          {isOwnProfile && (
+            <>
+              <p className="profile-email">{email}</p>
+              <p className="profile-joined">Se unió el {new Date(createdAt).toLocaleDateString()}</p>
+            </>
+          )}
         </div>
       </div>
     </div>

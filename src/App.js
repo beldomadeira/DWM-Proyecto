@@ -20,7 +20,7 @@ const App = () => {
 
           {/* Rutas privadas */}
           <Route
-            path="/user/:username"
+            path="/user/:id"
             element={
               <PrivateRoute>
                 <UserProfile />
