@@ -8,10 +8,11 @@ import axios from "axios";
 
 const LeftSide = ({ userProfilePic }) => {
     const navigate = useNavigate();
+    const userId = localStorage.getItem("userId");
 
     const handleLogout = () => {
-        localStorage.removeItem("token"); // Eliminar el token de localStorage
-        navigate("/login"); // Redirigir al usuario a la página de inicio de sesión
+        localStorage.removeItem("token"); 
+        navigate("/login"); 
     };
 
     const handleHomeClick = (e) => {
@@ -19,25 +20,21 @@ const LeftSide = ({ userProfilePic }) => {
         navigate("/feed");
     };
 
-//edite esto pero no esta andando bien
-
     const handleProfileClick = () => {
-        axios.get(`http://localhost:3001/api/user/profile/6728eaaa9aadd247da5f2a9a`,
-        {
+        axios.get(`http://localhost:3001/api/user/profile/${userId}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-        }
-        ).then((response) => {
-            console.log("Perfil del usuario", response.data);
-            console.log("Perfil del usuario 2", response.data.username);    
-            navigate(`/user/${response.data}`, { state: { userData: response.data } });
-        }).catch((error) => {
-            console.error("Error al obtener el perfil del usuario", error);
-    });
-    }
+        })
+            .then((response) => {
+                console.log("Perfil del usuario", response.data);
+                navigate(`/user/${response.data.user._id}`, { state: { userData: response.data } });
+            })
+            .catch((error) => {
+                console.error("Error al obtener el perfil del usuario", error);
+            });
+    };
 
-//hasta aca
 
     return (
         <div className="LeftSidePart">
