@@ -1,46 +1,41 @@
-import React from "react";
-import './MiddleSide.css';
-import Post from './Post';
-import { use } from "framer-motion/client";
+import React, { useEffect, useState } from "react";
+import "./MiddleSide.css";
+import Post from "./Post";
+import axios from "axios";
 
 const MiddleSide = () => {
-    const posts = [
-        {
-            username: "user1",
-            userProfilePic: "https://img.freepik.com/psd-gratis/ilustracion-3d-avatar-o-perfil-humano_23-2150671142.jpg",
-            postImage: "https://24ai.tech/es/wp-content/uploads/sites/5/2023/10/01_product_1_sdelat-izobrazhenie-1-1-2.jpg",
-            caption: "Loving the view!",
-            likes: 120,
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    console.log("token", localStorage.getItem("token"));
+    axios
+      .get(`http://localhost:3001/api/posts/feed`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
         },
-        {
-            username: "user2",
-            userProfilePic: "https://img.freepik.com/psd-premium/ilustracion-3d-avatar-o-perfil-humano_23-2150671167.jpg",
-            postImage: "https://24ai.tech/es/wp-content/uploads/sites/5/2023/10/01_product_1_sdelat-izobrazhenie-1-1-4.jpg",
-            caption: "Feeling happy!",
-            likes: 100,
-        },
-        {
-            username: "user3",
-            userProfilePic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWXaypfL5fRZ0s-SJWUep4OcHJqoGKLteqdg&s",
-            postImage: "https://www.shutterstock.com/image-photo/curious-scottish-fold-cat-grey-600nw-1925211236.jpg",
-            caption: "So tired!",
-            likes: 80,
-        }
-    ];
-    return (
-        <div className="MiddleSidePart">
-            {posts.map((post, index) => (
-                <Post 
-                    key={index}
-                    username={post.username}
-                    userProfilePic={post.userProfilePic}
-                    postImage={post.postImage}
-                    caption={post.caption}
-                    likes={post.likes}
-                />
-            ))}
-        </div>
-    );
-}
+      })
+      .then((response) => {
+        setPosts(response.data);
+      });
+  }, []);
+
+  return (
+    <div className="MiddleSidePart">
+      {posts.map((post, index) => (
+        <Post
+          key={index}
+          username={post.user.username}
+          userProfilePic={post.user.profilePicture}
+          postImage={`http://localhost:3001/${post.imageUrl}`}
+          caption={post.caption}
+          likes={post.likes}
+          comments={post.comments}
+          timeAgo={post.createdAt}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default MiddleSide;
