@@ -1,100 +1,79 @@
-/* pages/User.css */
-.user-profile {
-    max-width: 935px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 30px 20px;
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0095f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  padding: 2rem;
+}
+
+.error-message {
+  text-align: center;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  border: 1px solid #dbdbdb;
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.error-message p {
+  margin: 0;
+  color: #262626;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .error-container {
+    padding: 1rem;
   }
-  
-  .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+
+  .error-message {
+    padding: 1.5rem;
   }
-  
-  /* Ajustes específicos para el header del perfil */
-  .profile-header {
-    width: 100%;
-    max-width: 935px;
-    display: flex;
-    padding: 30px 0;
-    margin-bottom: 44px;
-    justify-content: center;
-    gap: 30px;
+
+  .error-icon {
+    font-size: 2.5rem;
   }
-  
-  .profile-avatar {
-    width: 150px;
-    height: 150px;
-    margin-right: 30px;
+
+  .error-message p {
+    font-size: 1rem;
   }
-  
-  .profile-info {
-    max-width: 600px;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner {
+    animation: none;
   }
-  
-  /* Ajustes para las estadísticas */
-  .profile-stats {
-    width: 100%;
-    max-width: 935px;
-    justify-content: center;
-    padding: 20px 0;
-    border-top: 1px solid #dbdbdb;
-  }
-  
-  /* Ajustes para la grid de posts */
-  .profile-grid {
-    width: 100%;
-    max-width: 935px;
-    margin: 0 auto;
-  }
-  
-  .grid-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    padding: 0 20px;
-  }
-  
-  /* Media queries para responsividad */
-  @media (max-width: 1024px) {
-    .user-profile {
-      padding: 20px 10px;
-    }
-    
-    .profile-header {
-      padding: 20px 0;
-      margin-bottom: 30px;
-    }
-    
-    .grid-content {
-      gap: 15px;
-      padding: 0 10px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .profile-header {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 15px 0;
-    }
-  
-    .profile-avatar {
-      margin-right: 0;
-      margin-bottom: 20px;
-    }
-  
-    .profile-info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .grid-content {
-      gap: 3px;
-      padding: 0;
-    }
-  }
+}
