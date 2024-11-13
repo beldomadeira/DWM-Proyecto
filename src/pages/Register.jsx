@@ -1,6 +1,8 @@
 import React from "react";
 import '../components/Register.css';
 import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
+
 
 
 const RegisterFormulario = () => {
@@ -21,20 +23,48 @@ const RegisterFormulario = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formulario);
-        const response = await fetch("http://localhost:3001/api/auth/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                "username": formulario.nombreusuario,
-                "email": formulario.email,
-                "password": formulario.contrasena,
-            }),
-        });
-        console.log(response);
-        if (response.ok) navigate("/feed");
-    }
+        try {
+            const response = await fetch("http://localhost:3001/api/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "username": formulario.nombreusuario,
+                    "email": formulario.email,
+                    "password": formulario.contrasena,
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const token = data.token; // Ajusta este valor si el token tiene otro nombre en la respuesta
+                localStorage.setItem("token", token); // Guarda el token para autenticar la siguiente solicitud
+
+                // Actualizar la foto de perfil predeterminada
+                const updateResponse = await axios.put("http://localhost:3001/api/user/profile/edit",
+                    { profilePicture: "https://cdn-icons-png.freepik.com/512/6063/6063734.png" },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`, // Usa el token para autenticar
+                        },
+                    }
+                );
+
+                if (updateResponse.status === 200) {
+                    console.log("Foto de perfil actualizada correctamente");
+                    navigate("/feed");
+                } else {
+                    console.error("Error al actualizar la foto de perfil:", updateResponse);
+                }
+            } else {
+                console.error("Error en el registro:", response);
+            }
+        } catch (error) {
+            console.error("Error en la solicitud:", error);
+        }
+    };
+
 
     return (
         <div className="register-container">
