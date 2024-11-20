@@ -1,0 +1,185 @@
+.sideBar-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.sideBar {
+    width: 350px; 
+    background-color: #fff;
+    padding: 30px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.5s ease;
+}
+
+.sideBar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sideBar ul li.logo {
+    text-align: center;
+    padding: 0px 0;
+    font-size: 40px;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #00cc99;
+}
+
+.sideBar ul li.logo span {
+    display: block;
+    color: #00cc99;
+}
+
+.sideBar ul li {
+    display: flex;
+    align-items: center;
+    padding: 25px 0;
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.3s ease, font-weight 0.3s ease;
+    margin-bottom: 15px;
+    color: #00cc99;
+}
+
+.sideBar ul li .icon {
+    margin-right: 20px;
+    font-size: 30px;
+    transition: transform 0.3s ease;
+    color: #00cc99;
+}
+
+@media (min-width: 768px) {
+    .sideBar {
+        transform: translateX(0);
+        width: 350px; 
+    }
+
+    .sideBar ul li {
+        padding: 15px 0;
+        color: #00cc99;
+    }
+
+    .sideBar ul li .icon {
+        font-size: 36px;
+        color: #00cc99;
+    }
+
+    .sideBar ul li:hover {
+        font-weight: bold;
+        color: #00cc99;
+    }
+
+    .sideBar ul li:hover .icon {
+        transform: scale(1.3);
+        color: #00cc99;
+    }
+
+    .sideBar ul li.logo {
+        font-size: 36px;
+        color: #00cc99;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (max-width: 1024px) {
+    .sideBar {
+        transform: translateX(0);
+        width: 200px; 
+        color: #00cc99;
+    }
+
+    .sideBar ul li {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        font-size: 18px;
+        justify-content: center;
+        color: #00cc99;
+    }
+
+    .sideBar ul li .icon {
+        margin-right: 0;
+        margin-bottom: 8px;
+        font-size: 40px;
+        color: #00cc99;
+    }
+
+    .sideBar ul li span {
+        display: none;
+        color: #00cc99;
+    }
+
+    .sideBar ul li:hover {
+        background-color: transparent;
+        font-weight: bold;
+        color: #00cc99;
+    }
+
+    .sideBar ul li:hover .icon {
+        transform: scale(1.3);
+        color: #00cc99;
+    }
+
+    .sideBar ul li.logo {
+        font-size: 36px;
+        color: #00cc99;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (max-width: 768px) {
+    .sideBar {
+        transform: translateX(0);
+        width: 100px;
+        color: #00cc99;
+    }
+
+    .sideBar ul li {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        font-size: 18px;
+        justify-content: center;
+        color: #00cc99;
+    }
+
+    .sideBar ul li .icon {
+        margin-right: 0;
+        margin-bottom: 8px;
+        font-size: 40px;
+        color: #00cc99;
+    }
+
+    .sideBar ul li span {
+        display: none;
+        color: #00cc99;
+    }
+
+    .sideBar ul li:hover {
+        background-color: transparent;
+        font-weight: bold;
+        color: #00cc99;
+    }
+
+    .sideBar ul li:hover .icon {
+        transform: scale(1.3);
+        color: #00cc99;
+    }
+
+    .sideBar ul li.logo {
+        font-size: 36px;
+        color: #00cc99;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+}
+

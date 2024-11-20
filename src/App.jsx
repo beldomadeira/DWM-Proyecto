@@ -1,13 +1,11 @@
-import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AuthProvider from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
-
-import RegisterFormulario from './pages/Register';
-import Feed from './pages/Feed';
-import Login from './pages/Login';
-import UserProfile from './pages/User';
+import Register from './pages/register/Register';
+import Feed from './pages/feed/Feed';
+import Login from './pages/login/Login';
+import UserProfile from './pages/profile/Profile';
 
 const App = () => {
   return (
@@ -15,12 +13,12 @@ const App = () => {
       <Router>
         <Routes>
           {/* Ruta default */}
-          <Route path="/" element={<Navigate to="/register" />} />
-          <Route path="*" element={<Navigate to="/register" />} />
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
 
           {/* Rutas privadas */}
           <Route
-            path="/user/:username"
+            path="/user/:id"
             element={
               <PrivateRoute>
                 <UserProfile />
@@ -38,7 +36,7 @@ const App = () => {
 
           {/* Rutas publicas */}
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<RegisterFormulario />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
     </AuthProvider>
