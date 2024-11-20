@@ -1,0 +1,77 @@
+.usersPanel-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.usersPanel {
+    width: 450px;
+    background-color: #fff;
+    padding: 30px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    right: 0;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.5s ease, transform 0.5s ease, width 0.5s ease; 
+    display: flex;
+    flex-direction: column; 
+}
+
+.usersCard-container {
+    flex-grow: 1; 
+    overflow-y: auto;
+    max-height: calc(100vh - 120px);
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+.input-container {
+    margin: 10px 0; 
+}
+
+.input-container input {
+    width: 100%;
+    border: 1px solid #dbdbdb; 
+    border-radius: 5px;
+    padding: 10px; 
+    box-sizing: border-box; 
+    outline: none;
+    margin: 0 auto;
+    display: block; 
+}
+
+@media (max-width: 1450px) {
+    .usersPanel {
+        width: 0; 
+        transform: translateX(100%); 
+        pointer-events: none;
+        opacity: 0; 
+    }
+    .usersPanel-container {
+        width: 0; 
+        transform: translateX(100%);
+        pointer-events: none; 
+        opacity: 0; 
+    }
+}
+
+.input-container {
+    margin: 10px 0; 
+}
+
+.input-container input {
+    width: 100%;
+    border: 1px solid #dbdbdb; 
+    border-radius: 5px;
+    padding: 10px; 
+    box-sizing: border-box; 
+    outline: none;
+    margin: 0 auto;
+    display: block; 
+}

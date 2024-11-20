@@ -1,0 +1,71 @@
+/* Estilos generales del componente */
+.userCard-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px;
+    background-color: #fff; 
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.userCard {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.userCard header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.userCard img {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+}
+
+.usersCard-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos hijos a la izquierda */
+    width: 100%; /* Asegura que .usersCard-info ocupe todo el ancho disponible */
+}
+
+.usersCard-info strong {
+    font-weight: 600;
+    color: #333;
+}
+
+.usersCard-info span {
+    opacity: 0.6;
+    color: #333;
+}
+
+.userCard aside {
+    display: flex;
+    align-items: center;
+}
+
+.userCard button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 8px;
+    width: auto;
+    padding: 12px 20px;
+    font-weight: bold;
+    background-color: #00cc99;
+    color: white;
+}
+
+.userCard button:hover {
+    background-color: #009977;
+}
+
+
