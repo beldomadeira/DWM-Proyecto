@@ -8,7 +8,7 @@ import RegisterFormulario from './pages/Register';
 import Feed from './pages/Feed';
 import Login from './pages/Login';
 import UserProfile from './pages/User';
-
+import EditProfile from './components/edit-profile';
 const App = () => {
   return (
     <AuthProvider>
@@ -35,7 +35,14 @@ const App = () => {
               </PrivateRoute>
             }
           />
-
+          <Route
+            path="/edit-profile"
+            element={
+              <PrivateRoute>
+                <EditProfile />
+              </PrivateRoute>
+            }
+          />
           {/* Rutas publicas */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterFormulario />} />

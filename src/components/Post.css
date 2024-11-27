@@ -99,5 +99,84 @@
     display: block; 
 }
 
+.liked {
+  color: red;
+}
+
+.comments-section {
+  padding: 10px 0;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.comment-username {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.delete-comment {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+}
+
+.delete-comment:hover {
+  color: red;
+}
+
+.addComment {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #dbdbdb;
+}
+
+.addComment input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.addComment button {
+  border: none;
+  background: none;
+  color: #0095f6;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addComment button:disabled {
+  color: #b3dffc;
+  cursor: default;
+}
+
+.interaction-counts {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.likes-count, .comments-count {
+  font-weight: 600;
+  color: #262626;
+}
+
+.actionIcon.liked {
+  color: #ed4956;
+  animation: likeAnimation 0.3s ease-in-out;
+}
+
+@keyframes likeAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
 
 

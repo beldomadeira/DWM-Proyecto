@@ -1,31 +1,35 @@
+import React, { useState, useEffect } from 'react';
 import LeftSide from '../components/LeftSide';
 import MiddleSide from '../components/MiddleSide';
 import axios from 'axios';
 
-function Feed(){
+function Feed() {
+    const [userProfilePic, setUserProfilePic] = useState(null);
     const userId = localStorage.getItem("userId");
-    const profilePicture = axios.get(`http://localhost:3001/api/user/profile/${userId}`, {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-    })
+
+    useEffect(() => {
+        axios.get(`http://localhost:3001/api/user/profile/${userId}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
         .then((response) => {
-            return response.data.user.profilePicture;
+            setUserProfilePic(response.data.user.profilePicture);
         })
         .catch((error) => {
             console.error("Error al obtener el perfil del usuario", error);
         });
+    }, [userId]);
 
     return (
         <div className="App">
             <div className='leftSide'>
-                <LeftSide userProfilePic={profilePicture} /> 
+                <LeftSide userProfilePic={userProfilePic} />
             </div>
             <div className='middleSide'>
                 <MiddleSide />
             </div>
             <div className='rightSide'>
-            
             </div>
         </div>
     );

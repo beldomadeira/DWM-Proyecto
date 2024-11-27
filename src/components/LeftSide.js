@@ -36,7 +36,7 @@ const LeftSide = ({ userProfilePic }) => {
             <div className="navLinkPart">
                 <div className="navLink">
                     <HomeIcon className="icon" />
-                    <div className="navName">Home</div>
+                    <div className="navName" onClick={handleHomeClick}>Home</div>
                 </div>
                 <div className="navLink">
                     <NotificationsIcon className="icon" />

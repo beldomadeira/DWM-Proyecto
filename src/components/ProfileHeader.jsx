@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProfileHeader.css';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileHeader = ({ 
   username, 
@@ -10,6 +11,8 @@ const ProfileHeader = ({
   createdAt, 
   isOwnProfile 
 }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="profile-header">
       <div className="profile-avatar">
@@ -21,7 +24,12 @@ const ProfileHeader = ({
           <h1 className="profile-username">{username}</h1>
           {isOwnProfile && (
             <>
-              <button className="edit-profile-btn">Editar perfil</button>
+              <button 
+                className="edit-profile-btn"
+                onClick={() => navigate('/edit-profile')}
+              >
+                Editar perfil
+              </button>
             </>
           )}
         </div>
