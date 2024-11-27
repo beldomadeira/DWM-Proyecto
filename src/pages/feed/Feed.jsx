@@ -1,9 +1,13 @@
-import LeftSide from '../components/LeftSide';
-import MiddleSide from '../components/MiddleSide';
+import React from 'react';
 import axios from 'axios';
+import SideBar from '../../components/sideBar/SideBar';
+import UsersPanel from '../../components/usersPanel/UsersPanel';
+import PostsPanel from '../../components/postsPanel/PostsPanel';
+import './Feed.css';
 
-function Feed(){
+function Feed() {
     const userId = localStorage.getItem("userId");
+    
     const profilePicture = axios.get(`http://localhost:3001/api/user/profile/${userId}`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -18,14 +22,14 @@ function Feed(){
 
     return (
         <div className="App">
-            <div className='leftSide'>
-                <LeftSide userProfilePic={profilePicture} /> 
+            <div className='sideBar-container'>
+                <SideBar /> 
             </div>
-            <div className='middleSide'>
-                <MiddleSide />
+            <div className='postsPanel-container'>
+                <PostsPanel />
             </div>
-            <div className='rightSide'>
-            
+            <div className='usersPanel-container'>
+                <UsersPanel />
             </div>
         </div>
     );

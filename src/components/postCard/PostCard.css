@@ -2,7 +2,7 @@
     background-color: #ffffff; 
     border: 1px solid #dbdbdb; 
     border-radius: 10px; 
-    max-width: 600px; 
+    max-width: 500px; 
     width: 100%; 
     margin: 20px auto; 
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
@@ -70,18 +70,30 @@
 }
 
 .actionIcon {
-    font-size: 30px; 
+    font-size: 30px; /* Tamaño predeterminado para todos los íconos */
     cursor: pointer; 
     transition: color 0.3s, transform 0.2s; 
     margin-right: 15px; 
 }
 
+.favoriteIcon { 
+    font-size: 35px; /* Tamaño más grande para el ícono de corazón */
+}
+
+.commentIcon {
+    font-size: 25px; /* Tamaño más pequeño para el ícono de comentario */
+}
+
+.liked {
+    color: #51bba8; /* Color verde agua cuando está "me gusta" */
+}
+
 .actionIcon:hover {
-    color: #51bba8; 
+    color: #51bba8; /* Color en hover */
 }
 
 .actionIcon:active {
-    transform: scale(1.1); 
+    transform: scale(1.1); /* Efecto de escala en click */
 }
 
 .addComment {
@@ -98,6 +110,3 @@
     margin: 0 auto;
     display: block; 
 }
-
-
-

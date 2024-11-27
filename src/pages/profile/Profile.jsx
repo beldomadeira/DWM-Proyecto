@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import LeftSide from '../components/LeftSide';
-import ProfileHeader from '../components/ProfileHeader';
-import ProfileStats from '../components/ProfileStats';
-import ProfileGrid from '../components/ProfileGrid';
-import './Layout.css';
-import './User.css';
 import axios from 'axios';
+import SideBar from '../../components/sideBar/SideBar';
+import ProfileHeader from '../../components/profileHeader/ProfileHeader';
+import ProfileStats from '../../components/profileStats/ProfileStats';
+import ProfileGrid from '../../components/profileGrid/ProfileGrid';
+import './Profile.css';
 
-const User = () => {
+const Profile = () => {
   const { id } = useParams();
 
   const [userData, setUserData] = useState({
@@ -19,10 +19,11 @@ const User = () => {
     stats: {
       posts: 0,
       followers: 0,
-      following: 0
+      following: 0,
     },
     posts: []
   });
+
   const [isOwnProfile, setIsOwnProfile] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -70,7 +71,7 @@ const User = () => {
     return (
       <div className="App">
         <div className="leftSide">
-          <LeftSide />
+          <SideBar />
         </div>
         <div className="middleSide">
           <div className="loading-container">
@@ -85,7 +86,7 @@ const User = () => {
     return (
       <div className="App">
         <div className="leftSide">
-          <LeftSide />
+          <SideBar />
         </div>
         <div className="middleSide">
           <div className="error-container">
@@ -102,7 +103,7 @@ const User = () => {
   return (
     <div className="App">
       <div className="leftSide">
-        <LeftSide userProfilePic={userData.avatar} />
+        <SideBar />
       </div>
       
       <div className="middleSide">
@@ -112,9 +113,6 @@ const User = () => {
             name={userData.name}
             bio={userData.bio}
             avatar={userData.avatar}
-            email={userData.email}
-            createdAt={userData.createdAt}
-            isOwnProfile={isOwnProfile}
           />
           
           <ProfileStats 
@@ -126,8 +124,9 @@ const User = () => {
           <ProfileGrid posts={userData.posts} />
         </div>
       </div>
+      
     </div>
   );
 };
 
-export default User;
+export default Profile;

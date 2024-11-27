@@ -1,0 +1,86 @@
+body {
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  text-align: center;
+  height: 100%; /* Asegura que el body ocupe todo el alto disponible */
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Asegura que el contenedor ocupe al menos toda la pantalla */
+  background-color: #f4f2f1;
+  padding: 20px;
+  box-sizing: border-box; /* Para incluir el padding en el cálculo del tamaño */
+}
+
+.title-app {
+  font-size: 2.5rem; /* Aumenté el tamaño del título */
+  margin-bottom: 30px; /* Espacio mayor debajo del título */
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  color: #00cc99;
+}
+
+.form-login {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  gap: 20px;
+  box-sizing: border-box; /* Para asegurar que el padding no afecte el ancho total */
+}
+
+.input-user,
+.input-pass,
+.boton-ingresar {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px; /* Aumenté el tamaño de la fuente para mejor legibilidad */
+  transition: 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input-user,
+.input-pass {
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+}
+
+.input-user:focus,
+.input-pass:focus {
+  outline: none;
+  border-color: #00cc99;
+}
+
+.boton-ingresar {
+  background-color: #00cc99;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.boton-ingresar:hover {
+  background-color: #009977;
+}
+
+.link-to-register {
+  margin-top: 20px;
+  font-size: 16px; /* Aumenté el tamaño del texto */
+  color: #00cc99;
+  cursor: pointer;
+}
+
+.link-to-register:hover {
+  color: #009977;
+}
