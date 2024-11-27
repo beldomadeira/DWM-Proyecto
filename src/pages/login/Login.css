@@ -4,7 +4,7 @@ body {
   padding: 0;
   color: #333;
   text-align: center;
-  height: 100%; /* Asegura que el body ocupe todo el alto disponible */
+  height: 100%; 
 }
 
 .login-container {
@@ -12,15 +12,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Asegura que el contenedor ocupe al menos toda la pantalla */
+  min-height: 100vh; 
   background-color: #f4f2f1;
   padding: 20px;
-  box-sizing: border-box; /* Para incluir el padding en el cálculo del tamaño */
+  box-sizing: border-box;
 }
 
 .title-app {
-  font-size: 2.5rem; /* Aumenté el tamaño del título */
-  margin-bottom: 30px; /* Espacio mayor debajo del título */
+  font-size: 2.5rem; 
+  margin-bottom: 30px; 
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   color: #00cc99;
 }
@@ -36,7 +36,7 @@ body {
   width: 100%;
   max-width: 400px;
   gap: 20px;
-  box-sizing: border-box; /* Para asegurar que el padding no afecte el ancho total */
+  box-sizing: border-box; 
 }
 
 .input-user,
@@ -45,7 +45,7 @@ body {
   width: 100%;
   padding: 12px;
   border-radius: 6px;
-  font-size: 16px; /* Aumenté el tamaño de la fuente para mejor legibilidad */
+  font-size: 16px; 
   transition: 0.3s ease;
   box-sizing: border-box;
 }
@@ -76,7 +76,7 @@ body {
 
 .link-to-register {
   margin-top: 20px;
-  font-size: 16px; /* Aumenté el tamaño del texto */
+  font-size: 16px; 
   color: #00cc99;
   cursor: pointer;
 }
